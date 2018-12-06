@@ -43,11 +43,12 @@ class Lfm
      * @param  string  $path  Real path of a file.
      * @return string
      */
+
     public function getNameFromPath($path)
     {
         return $this->mbBasename($path);
+//        return pathinfo($path, PATHINFO_BASENAME);
     }
-
 
     private function mbBasename($path)
     {
@@ -247,7 +248,6 @@ class Lfm
      */
     public static function routes()
     {
-        
         $middleware = [ 'web', CreateDefaultFolder::class, MultiUser::class ];
         $as = 'unisharp.lfm.';
         $prefix = config('lfm.url_prefix');

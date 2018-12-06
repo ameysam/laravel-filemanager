@@ -66,7 +66,7 @@ return [
         'file'  => [
             'folder_name'  => 'files',
             'startup_view' => 'grid',
-            'max_size'     => 50000, // size in KB
+            'max_size'     => 50000,
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -78,7 +78,7 @@ return [
         'image' => [
             'folder_name'  => 'photos',
             'startup_view' => 'list',
-            'max_size'     => 50000, // size in KB
+            'max_size'     => 50000,
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -97,7 +97,7 @@ return [
     |--------------------------------------------------------------------------
      */
 
-    'disk'                     => 'public',
+    'disk'                     => 'public_files',
 
     'rename_file'              => false,
 
@@ -194,17 +194,5 @@ return [
      */
     'php_ini_overrides'        => [
         'memory_limit' => '256M',
-    ],
-
-    /* Limit users by their roles*/
-    'should_limit_user' => true,
-
-    /*
-     | --------------------------------------------------------------------------
-     | Define gate with size
-     | like:  ['only-professor' => 2048]
-     */
-    'size_limit_user' => [
-        'only-professor' => 10485760 # 10MB = 10 * 1024 * 1024
     ],
 ];
