@@ -247,6 +247,7 @@ class Lfm
      */
     public static function routes()
     {
+        
         $middleware = [ 'web', CreateDefaultFolder::class, MultiUser::class ];
         $as = 'unisharp.lfm.';
         $prefix = config('lfm.url_prefix');
