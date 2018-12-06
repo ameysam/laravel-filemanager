@@ -48,7 +48,7 @@ class Lfm
         return $this->mbBasename($path);
     }
 
-    function mbBasename($path)
+    private function mbBasename($path)
     {
         $temp = explode(DIRECTORY_SEPARATOR, $path);
         return end($temp);

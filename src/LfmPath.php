@@ -234,6 +234,12 @@ class LfmPath
         return $new_file_name;
     }
 
+    private function convertFilesize($bytes, $decimals = 0){
+        $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+        $factor = floor((strlen($bytes) - 1) / 3);
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    }
+
     private function uploadValidator($file)
     {
 
@@ -241,7 +247,7 @@ class LfmPath
             foreach (config('lfm.size_limit_user') as $gate_function => $size){
                 if(Gate::allows($gate_function)){
                     if ($file->getClientSize() > $size) {
-                        return $this->error('file-size', ['max' => convert_filesize($size)]);
+                        return $this->error('file-size', ['max' => $this->convertFilesize($size)]);
 //                        array_push($this->errors,'فایل انتخابی باید کمتر از ' . $size . ' کیلوبایت باشد.');
 //                        return false;
                     }
