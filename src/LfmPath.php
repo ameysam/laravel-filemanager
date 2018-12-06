@@ -236,6 +236,19 @@ class LfmPath
 
     private function uploadValidator($file)
     {
+
+        if (config('lfm.should_limit_user', false)) {
+            foreach (config('lfm.size_limit_user') as $gate_function => $size){
+                if(Gate::allows($gate_function)){
+                    if ($file->getClientSize() > $size) {
+                        return $this->error('file-size', ['max' => convert_filesize($size)]);
+//                        array_push($this->errors,'فایل انتخابی باید کمتر از ' . $size . ' کیلوبایت باشد.');
+//                        return false;
+                    }
+                }
+            }
+        }
+
         if (empty($file)) {
             return $this->error('file-empty');
         } elseif (! $file instanceof UploadedFile) {

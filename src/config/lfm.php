@@ -195,4 +195,16 @@ return [
     'php_ini_overrides'        => [
         'memory_limit' => '256M',
     ],
+
+    /* Limit users by their roles*/
+    'should_limit_user' => true,
+
+    /*
+     | --------------------------------------------------------------------------
+     | Define gate with size
+     | like:  ['only-professor' => 2048]
+     */
+    'size_limit_user' => [
+        'only-professor' => 10485760 # 10MB = 10 * 1024 * 1024
+    ],
 ];

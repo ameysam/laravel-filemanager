@@ -45,7 +45,13 @@ class Lfm
      */
     public function getNameFromPath($path)
     {
-        return pathinfo($path, PATHINFO_BASENAME);
+        return $this->mbBasename($path);
+    }
+
+    function mbBasename($path)
+    {
+        $temp = explode(DIRECTORY_SEPARATOR, $path);
+        return end($temp);
     }
 
     public function allowFolderType($type)
