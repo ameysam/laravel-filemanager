@@ -15,7 +15,7 @@ class LfmStorageRepository implements RepositoryContract
     {
         $this->helper = $helper;
 
-        if (strpos(request()->type, 'secure') !== false) {
+        if (strpos(request()->type, 'private') !== false) {
             $this->disk = Storage::disk($this->helper->config('private_disk'));
         } else {
             $this->disk = Storage::disk($this->helper->config('disk'));
