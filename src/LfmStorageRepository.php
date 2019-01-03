@@ -14,7 +14,13 @@ class LfmStorageRepository implements RepositoryContract
     public function __construct($storage_path, $helper)
     {
         $this->helper = $helper;
-        $this->disk = Storage::disk($this->helper->config('disk'));
+
+        if (strpos(request()->type, 'secure') !== false) {
+            $this->disk = Storage::disk($this->helper->config('private_disk'));
+        } else {
+            $this->disk = Storage::disk($this->helper->config('disk'));
+        }
+
         $this->path = $storage_path;
     }
 
